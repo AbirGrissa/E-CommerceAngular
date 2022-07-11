@@ -1,0 +1,38 @@
+[
+    {
+      "imgUrl": "https://www.visualsfrance.com/907-thickbox_default/np-fz100.jpg",
+      "name": "Batterie 2 280 mAh série Z pour réflex Sony Alpha 9 / 7 III",
+      "price": 110,
+      "id": 1
+    },
+    {
+      "imgUrl": "https://www.visualsfrance.com/891-thickbox_default/sel100400gm-fe-100-400mm-f45-56-gm-oss.jpg",
+      "name": "Sony SEL100400GM - FE 100-400mm f/4.5-5.6 GM OSS",
+      "price": 91,
+      "id": 2
+    },
+    {
+      "imgUrl": "https://www.visualsfrance.com/3965-thickbox_default/aw-ue4.jpg",
+      "name": "Caméra 4K/HD, 1 CMOS 1/2,5″, Zoom 4x - HDMI / IP / USB",
+      "price": 94.5,
+      "id": 3
+    },
+    {
+      "imgUrl": "http://guesseu.scene7.com/is/image/GuessEU/WC0001FMSWC-G5?wid=520&fmt=jpeg&qlt=80&op_sharpen=0&op_usm=1.0,1.0,5,0&iccEmbed=0",
+      "name": "GUESS CONNECT WATCH",
+      "price": 438.9,
+      "id": 4
+    },
+    {
+      "imgUrl": "https://www.visualsfrance.com/447-thickbox_default/mvmxprobase.jpg",
+      "name": "Base fluide avec pied retractable pour monopodes",
+      "price": 20,
+      "id": 5
+    },
+    {
+        "imgUrl": "https://www.visualsfrance.com/7365-thickbox_default/alpha-7siii.jpg",
+        "name": "Sony Alpha 7S III",
+        "price": 450,
+        "id": 6
+    }
+  ]
