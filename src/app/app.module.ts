@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialExampleModule } from './material.module';
 import { HomeComponent } from './home/home.component';
-import { MaterialExampleModule1 } from './card.module';
+
+
+
 /*import { ProductsModule } from './products/products.module';*/
 
 
@@ -20,8 +22,9 @@ import { MaterialExampleModule1 } from './card.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialExampleModule,
-    MaterialExampleModule1
-   /* ProductsModule*/
+   /* MatCardModule,
+    MatToolbarModule
+    ProductsModule*/
   ],
   providers: [],
   bootstrap: [AppComponent]
