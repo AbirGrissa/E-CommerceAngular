@@ -1,45 +1,106 @@
-
-<form class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Company (disabled)</mat-label>
-      <input matInput disabled value="Google">
-    </mat-form-field>
-  
+<mat-card class="login-card">
+<mat-card-header>
+    <mat-card-title>S'inscrire</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
     <table class="example-full-width" cellspacing="0"><tr>
       <td><mat-form-field class="example-full-width" appearance="fill">
         <mat-label>First name</mat-label>
         <input matInput>
       </mat-form-field></td>
       <td><mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Long Last Name That Will Be Truncated</mat-label>
+        <mat-label>Last Name</mat-label>
         <input matInput>
       </mat-form-field></td>
-    </tr></table>
-  
+    </tr>
+  </table>
+
     <p>
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Address</mat-label>
-        <textarea matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
-      </mat-form-field>
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Address 2</mat-label>
-        <textarea matInput></textarea>
+        <textarea matInput placeholder="Ex. 100 Main St"></textarea>
       </mat-form-field>
     </p>
-  
+
     <table class="example-full-width" cellspacing="0"><tr>
       <td><mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>City</mat-label>
+        <mat-label>Gouvernorat</mat-label>
         <input matInput placeholder="Ex. San Francisco">
       </mat-form-field></td>
       <td><mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>State</mat-label>
-        <input matInput placeholder="Ex. California">
-      </mat-form-field></td>
-      <td><mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Postal Code</mat-label>
-        <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
+        <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="">
         <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
       </mat-form-field></td>
-    </tr></table>
-  </form>
+    </tr>
+  </table>
+
+    <form class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+               placeholder="Ex. pat@example.com">
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+    
+    <div  class="example-container">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button>S'inscrire</button>
+  </mat-card-actions>
+</mat-card>
+
+
+
+
+<mat-card class="login-card">
+  <mat-card-header>
+    <mat-card-title>Se connecter</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+               placeholder="Ex. pat@example.com">
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </form>
+    <div  class="example-container">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button>Se connecter</button>
+  </mat-card-actions>
+</mat-card>
+

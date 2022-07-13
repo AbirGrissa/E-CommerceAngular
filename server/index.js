@@ -11,7 +11,7 @@ console.log(`express hosting from ${destinationDir}`);
 
 //serving index.html
 app.get('*',(req,res)=>{
-    res.sendfile(path.join(destinationDir,'index.html'));
+    res.sendFile(path.join(destinationDir,'index.html'));
 });
 console.log(`serving index.html`);
 
