@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators,FormGroupDirective, NgForm,} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -10,9 +13,20 @@ import {ErrorStateMatcher} from '@angular/material/core';
 
 export class LoginComponent implements OnInit {
   password="";
-  constructor() {}
 
+  constructor(private router:Router, private authService:AuthService) {}
+
+  login(){
+    this.authService.login(this.password,this.email).subscribe(s=>
+      this.router.navigate([""]));
+  }
+  
   ngOnInit(): void {}
+
+
+
+
+
 
   email = new FormControl('', [Validators.required, Validators.email]);
   /*getErrorMessage() {
