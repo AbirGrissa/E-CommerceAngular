@@ -6,8 +6,9 @@ mat-card img{
   }
   .example-card {
     max-width: 400px;
-    margin: 1cm;
-    background-color:bisque;
+    margin: 10px auto;
+    /*background-color:bisque;*/
+
   }
   
   .example-header-image {

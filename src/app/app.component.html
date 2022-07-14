@@ -328,8 +328,8 @@
 
 <div class="content" role="main">
 -->
-  <!-- Highlight Card -->
-  <!--
+<!-- Highlight Card -->
+<!--
   <div class="card highlight-card card-small">
 
     <svg id="rocket" xmlns="http://www.w3.org/2000/svg" width="101.678" height="101.678" viewBox="0 0 101.678 101.678">
@@ -352,8 +352,8 @@
 
   </div>
 -->
-  <!-- Resources -->
-  <!--
+<!-- Resources -->
+<!--
   <h2>Resources</h2>
   <p>Here are some links to help you get started:</p>
 
@@ -389,8 +389,8 @@
 
   </div>
 -->
-  <!-- Next Steps -->
-  <!--
+<!-- Next Steps -->
+<!--
   <h2>Next Steps</h2>
   <p>What do you want to do next with your app?</p>
 
@@ -428,8 +428,8 @@
     </button>
   </div>
 -->
-  <!-- Terminal -->
-  <!--
+<!-- Terminal -->
+<!--
   <div class="terminal" [ngSwitch]="selection.value">
       <pre *ngSwitchDefault>ng generate component xyz</pre>
       <pre *ngSwitchCase="'material'">ng add @angular/material</pre>
@@ -439,8 +439,8 @@
       <pre *ngSwitchCase="'build'">ng build</pre>
   </div>
 -->
-  <!-- Links -->
-  <!--
+<!-- Links -->
+<!--
   <div class="card-container">
     <a class="circle-link" title="Find a Local Meetup" href="https://www.meetup.com/find/?keywords=angular" target="_blank" rel="noopener">
       <svg xmlns="http://www.w3.org/2000/svg" width="24.607" height="23.447" viewBox="0 0 24.607 23.447">
@@ -458,8 +458,8 @@
     </a>
   </div>
 -->
-  <!-- Footer -->
-  <!--
+<!-- Footer -->
+<!--
   <footer>
       Love Angular?&nbsp;
       <a href="https://github.com/angular/angular" target="_blank" rel="noopener"> Give our repo a star.
@@ -494,21 +494,30 @@
 
 
 <header>
-<mat-toolbar color="primary">
-  <!--<button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <mat-toolbar color="primary">
+    <!--<button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>-->
-  <span> <a [routerLink]="['/home']" id="link"> AudioVisuel STORE</a></span>
-  <span class="example-spacer"></span>
-  <!--<button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <a class="logo" [routerLink]="['/home']"></a>
+    <span> <a [routerLink]="['/home']" id="link"> AudioVisuel STORE</a></span>
+    <span class="example-spacer"></span>
+    <!--<button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
     <mat-icon>favorite</mat-icon>
   </button>-->
-  <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
-    <mat-icon>add_shopping_cart</mat-icon>
-  </button>
-  <a mat-button routerLink="/products" routerLinkActive="active">Les Promotions</a>
-  <a mat-button routerLink="/login" routerLinkActive="active">Mon Compte</a>
-</mat-toolbar>
+    <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <mat-icon>add_shopping_cart</mat-icon>
+    </button>
+    <a mat-button routerLink="/products" routerLinkActive="active">Les Promotions</a>
+    <a *ngIf="!user" mat-button routerLink="/login" routerLinkActive="active">Se connecter</a>
+    <div>
+      <a *ngIf="user" [matMenuTriggerFor]="menu"mat-button>
+        <mat-icon>account_circle</mat-icon>{{user.firstname}}
+      </a>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">Se deconnecter</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
 </header>
 
 <!--

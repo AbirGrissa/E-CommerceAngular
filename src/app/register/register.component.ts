@@ -25,11 +25,13 @@ export class RegisterComponent implements OnInit {
 
   userForm=new FormGroup({
     firstname : new FormControl('',[Validators.required]),
-    lastsname : new FormControl('',[Validators.required]),
-    password : new FormControl('',[Validators.required])
+    lastname : new FormControl('',[Validators.required]),
+    password : new FormControl('',[Validators.required]),
+    repeatpwd : new FormControl('',[Validators.required]),
+    emailFormControl : new FormControl('', [Validators.required, Validators.email])
   });
 
-  email = new FormControl('', [Validators.required, Validators.email]);
+  /*email = new FormControl('', [Validators.required, Validators.email]);
   /*l'inscription ne se fait pas jusqu'au l'entré d'un mail valide*/ 
   /*getErrorMessage() {
       if (this.email.hasError('required')) {
@@ -38,7 +40,7 @@ export class RegisterComponent implements OnInit {
       return this.email.hasError('email') ? 'Not a valid email' : '';
     }*/
     
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  emailFormControl = new FormControl();
   matcher = new MyErrorStateMatcher();
   hide = true;
 }
