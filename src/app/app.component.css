@@ -19,3 +19,7 @@
     vertical-align: middle;
     margin: 0 5px;
   }
+  header{
+    max-width: 5000px;
+    min-width: 300px;
+  }

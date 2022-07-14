@@ -28,7 +28,8 @@
 
 /*card*/
   .login-card{
-    width: 500px;
+    max-width: 500px;
+    min-width: 150;
     margin: 7% auto;/*in the center*/
     /*background-color: antiquewhite;*/
   }

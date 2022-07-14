@@ -17,32 +17,45 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
+    if (!this.userForm.valid){return;}
     const user=this.userForm.getRawValue();
     this.authService.register(user).subscribe(s=>this.router.navigate(['/login']));
   }
+  passwordValidator(control:FormControl)
+  {
+    let password= control.root.get("password");
+    return password && control.value !== password.value ?
+    {
+      passwordMatch:true
+    }
+    : null
+  }
 
-
-
+  repeatpwd = new FormControl('',[Validators.required,this.passwordValidator]);
+    
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   userForm=new FormGroup({
     firstname : new FormControl('',[Validators.required]),
     lastname : new FormControl('',[Validators.required]),
     password : new FormControl('',[Validators.required]),
-    repeatpwd : new FormControl('',[Validators.required]),
-    emailFormControl : new FormControl('', [Validators.required, Validators.email])
+    repeatpwd : this.repeatpwd,
+    emailFormControl : this.emailFormControl
   });
 
   /*email = new FormControl('', [Validators.required, Validators.email]);
   /*l'inscription ne se fait pas jusqu'au l'entré d'un mail valide*/ 
-  /*getErrorMessage() {
-      if (this.email.hasError('required')) {
-        return 'You must enter a value';
-      }
-      return this.email.hasError('email') ? 'Not a valid email' : '';
-    }*/
+  
     
-  emailFormControl = new FormControl();
+  
   matcher = new MyErrorStateMatcher();
   hide = true;
+
+  get firstname(){return this.userForm.get("firstname")}
+  get lastname(){return this.userForm.get("lastname")}
+  get email(){return this.userForm.get("email")}
+  get password(){return this.userForm.get("password")}
+  
+  
 }
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {

@@ -17,4 +17,3 @@ console.log(`serving index.html`);
 
 //initialize app and listen to port 
 app.listen(port,()=>console.log(`server is running from port ${port}`));
-
