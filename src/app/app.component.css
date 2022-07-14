@@ -5,3 +5,17 @@
     text-decoration: none;
     color: white;
   }
+
+    .logo{
+      background-image: url('../assets/logo.png');
+      height: 40px;
+      width: 40px;
+      background-size:contain;
+      background-repeat:no-repeat;
+      margin-right: 5px;
+    
+  }
+  .mat-icon{
+    vertical-align: middle;
+    margin: 0 5px;
+  }
