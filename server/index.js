@@ -1,6 +1,6 @@
-const express= require('express');
+/*const express= require('express');
 const path =require('path');
-const port= process.env.port || 4260 /*other port */;
+const port= process.env.port || 4260 /*other port ;
 const app=express();
 
 const destinationDir=path.join(__dirname ,'../dist/first-angular-app');
@@ -16,4 +16,12 @@ app.get('*',(req,res)=>{
 console.log(`serving index.html`);
 
 //initialize app and listen to port 
-app.listen(port,()=>console.log(`server is running from port ${port}`));
+app.listen(port,()=>console.log(`server is running from port ${port}`));*/
+const app = require ('./config/express');
+const config = require('./config/config');
+
+//listen to the port 
+app.listen (config.port,()=>
+{
+    console.log(`started on port ${config.port}`);
+});
