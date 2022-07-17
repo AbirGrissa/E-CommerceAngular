@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path:'login',
-    pathMatch:'full',
+    /*pathMatch:'full',*/
     component:LoginComponent
   },
   {

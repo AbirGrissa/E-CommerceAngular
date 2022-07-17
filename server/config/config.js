@@ -3,5 +3,10 @@ const envVars= process.env;
 module.exports=
 {
     port:envVars.PORT,
-    env: envVars.NODE_ENV
+    env: envVars.NODE_ENV,
+    mongo:{
+        uri: envVars.MONGODB_URI,
+        port:envVars.MONGO_PORT,
+        isDebug: this.envVars.MONGOOSE_DEBUG
+    }
 };
