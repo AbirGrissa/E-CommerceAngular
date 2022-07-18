@@ -28,7 +28,7 @@ export class AuthService {
   }
 
   register(user:any){ 
-    return this.httpClient.post<User>(`${this.apiUrl}register`,user).pipe
+    return (this.httpClient.post<User>(`${this.apiUrl}register`, user).pipe
     (
       switchMap(savedUser=>{
         this.setUser(savedUser);
@@ -39,8 +39,8 @@ export class AuthService {
         console.log(`server erreur occured`,e);
         return throwError(`registration failed please contact to admin`);
       })
-    );
-
+    ));
+    }
 
 
     //api call to save user in db
@@ -48,7 +48,6 @@ export class AuthService {
     /*this.setUser(user);
     console.log(`registred user succefully`,user);
     return of(user);*/
-  }
   private setUser(user:any){this.user$.next(user);}
   
 }

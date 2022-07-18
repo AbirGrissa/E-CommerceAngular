@@ -11,12 +11,12 @@ const routes = require ('../routes');
 const app=express();
 
 //logger
-if (config.env==='development'){
+if (config.env === 'development'){
     app.use(logger('dev'));
 }
 
 //get dist folder
-const distDir=path.join(__dirname ,'../../dist');
+const distDir=path.join(__dirname ,'../../dist/first-angular-app');
 
 //use dist folder as hosting folder by express
 app.use(express.static(distDir));

@@ -13,14 +13,14 @@ export class RegisterComponent implements OnInit {
 
   constructor(private router:Router, private authService:AuthService) { }
 
-  ngOnInit(): void {
-  }
+  
 
   register(){
     if (!this.userForm.valid){return;}
     const user=this.userForm.getRawValue();
-    this.authService.register(user).subscribe(s=>this.router.navigate(['/home']));
+    this.authService.register(user).subscribe(s=>this.router.navigate(["/home"]));
   }
+  
   passwordValidator(control:FormControl)
   {
     let password= control.root.get("password");
@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
   /*email = new FormControl('', [Validators.required, Validators.email]);
   /*l'inscription ne se fait pas jusqu'au l'entré d'un mail valide*/ 
   
-    
+  
   
   matcher = new MyErrorStateMatcher();
   hide = true;
@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
   get lastname(){return this.userForm.get("lastname")}
   get email(){return this.userForm.get("email")}
   get password(){return this.userForm.get("password")}
-  
+  ngOnInit(): void {}
   
 }
 

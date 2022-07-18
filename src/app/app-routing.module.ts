@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path:'home',
-    pathMatch:'full',
+    /*pathMatch:'full',*/
     component:HomeComponent
   },
   {

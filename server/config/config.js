@@ -7,6 +7,6 @@ module.exports=
     mongo:{
         uri: envVars.MONGODB_URI,
         port:envVars.MONGO_PORT,
-        isDebug: this.envVars.MONGOOSE_DEBUG
+        isDebug: envVars.MONGOOSE_DEBUG
     }
 };
