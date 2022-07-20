@@ -24,7 +24,8 @@ const config = require('./config/config');
 require('./config/mongoose');
 
 //listen to the port 
-app.listen (config.port,()=>
+//app.listens
+app.listen(config.port,()=>
 {
     console.log(`started on port ${config.port} (${config.env})`);
 });

@@ -1,19 +1,22 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { catchError, of, Subject, switchMap, throwError } from 'rxjs';
+//import { FormControl } from '@angular/forms';
+import { of, Subject, throwError} from 'rxjs';
+import {switchMap,catchError} from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 import { User } from './user';
+import { FormControl } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  private user$ = new Subject<User>();
+  private user$ = new Subject<User>;
   private apiUrl='/api/auth/';
   constructor(private httpClient:HttpClient) { }
 
   login(password: string, email: FormControl<string | null>) {
+    
     console.log("connected");
     return of({email,password});
   }
@@ -28,8 +31,23 @@ export class AuthService {
   }
 
   register(user:any){ 
-    return (this.httpClient.post<User>(`${this.apiUrl}register`, user).pipe
-    (
+    //post user to the server
+    return this.httpClient.post<User>(`${this.apiUrl}register`, user).pipe 
+    (switchMap(savedUser=>{
+      this.setUser(savedUser);
+      console.log(`user registred succeffully`,savedUser);
+      return of (savedUser);
+    }),
+      catchError(e=>{
+      console.log(`server erreur occured`,e);
+      return throwError(`registration failed please contact to admin`);})
+    /*(savedUser =>{
+      this.setUser(savedUser);
+      console.log(`user registred succeffully`,savedUser);
+      return of (savedUser);}*/
+      
+      
+      /*//cancel the previous request and submit the next one
       switchMap(savedUser=>{
         this.setUser(savedUser);
         console.log(`user registred succeffully`,savedUser);
@@ -38,8 +56,8 @@ export class AuthService {
       catchError(e=>{
         console.log(`server erreur occured`,e);
         return throwError(`registration failed please contact to admin`);
-      })
-    ));
+      })*/
+    );
     }
 
 
@@ -48,6 +66,6 @@ export class AuthService {
     /*this.setUser(user);
     console.log(`registred user succefully`,user);
     return of(user);*/
-  private setUser(user:any){this.user$.next(user);}
-  
+  private setUser(user:any){
+    this.user$.next(user);}
 }

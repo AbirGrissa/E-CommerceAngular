@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   hide = true;
 
-  get firstname(){return this.userForm.get("firstname")}
+  get firstname(){return this.userForm.get("firstname");}
   get lastname(){return this.userForm.get("lastname")}
   get email(){return this.userForm.get("email")}
   get password(){return this.userForm.get("password")}

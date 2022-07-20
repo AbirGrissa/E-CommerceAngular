@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({extended:true}));//use node js
 app.use(helmet());
 
 //allow cors
-app.use(cors);
+app.use(cors());
 
 //api router localhost:4050/api
 app.use('/api/',routes);

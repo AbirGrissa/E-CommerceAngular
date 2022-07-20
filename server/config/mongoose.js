@@ -20,5 +20,6 @@ if(config.mongo.isDebug){
         debug(`${collectionName}.${method}`,util.inspect(query,false,20),doc);
     });
 }
+require('../models/user.model');
 
 module.exports=db;

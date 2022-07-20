@@ -3,5 +3,6 @@ export interface User {
     firstname:string;
     lastname:string;
     password:string;
-    repeatpsw?:string/*optionnel car on va pas stocker dans la bd*/
+    roles? :any[];
+    /*repeatpsw?:string/*optionnel car on va pas stocker dans la bd*/
   }
