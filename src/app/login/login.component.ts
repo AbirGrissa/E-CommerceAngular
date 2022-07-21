@@ -12,32 +12,22 @@ import { AuthService } from '../auth.service';
 })
 
 export class LoginComponent implements OnInit {
-  password="";
-
+  error!:string;
+  password!:string;
+  email!:string;
   constructor(private router:Router, private authService:AuthService) {}
 
   login(){
-    this.authService.login(this.password,this.email).subscribe(s=>
-      this.router.navigate([""]));
+    this.error='';
+    this.authService.login(this.password,this.email).subscribe(
+      s=>this.router.navigate([""]),
+      e=> this.error=e
+      );
+     
   }
   
   ngOnInit(): void {}
-
-
-
-
-
-
-  email = new FormControl('', [Validators.required, Validators.email]);
-  /*getErrorMessage() {
-      if (this.email.hasError('required')) {
-        return 'You must enter a value';
-      }
-  
-      return this.email.hasError('email') ? 'Not a valid email' : '';
-    }*/
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  matcher = new MyErrorStateMatcher();
+  //email = new FormControl('', [Validators.required, Validators.email]);
   hide = true;
 }
 

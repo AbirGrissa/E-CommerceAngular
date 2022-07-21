@@ -15,10 +15,21 @@ export class AuthService {
   private apiUrl='/api/auth/';
   constructor(private httpClient:HttpClient) { }
 
-  login(password: string, email: FormControl<string | null>) {
-    
-    console.log("connected");
-    return of({email,password});
+  login(password: string, emailFormControl: string) {
+    const loginCredentials={emailFormControl,password};
+    console.log("connected",loginCredentials);
+    return this.httpClient.post<User>(`${this.apiUrl}login`,loginCredentials).pipe(
+      switchMap( foundUser =>{
+        this.setUser(foundUser);
+        console.log(`user founded: `,foundUser);
+      return of (foundUser);}
+      ),
+      catchError(e=>{
+        console.log(`server erreur occured`,e);
+        return throwError(`login failed please check your informations`);})
+     
+      
+    );
   }
 
   get user(){return this.user$.asObservable();}
@@ -41,22 +52,7 @@ export class AuthService {
       catchError(e=>{
       console.log(`server erreur occured`,e);
       return throwError(`registration failed please contact to admin`);})
-    /*(savedUser =>{
-      this.setUser(savedUser);
-      console.log(`user registred succeffully`,savedUser);
-      return of (savedUser);}*/
-      
-      
-      /*//cancel the previous request and submit the next one
-      switchMap(savedUser=>{
-        this.setUser(savedUser);
-        console.log(`user registred succeffully`,savedUser);
-        return of (savedUser);
-      }),
-      catchError(e=>{
-        console.log(`server erreur occured`,e);
-        return throwError(`registration failed please contact to admin`);
-      })*/
+   
     );
     }
 
