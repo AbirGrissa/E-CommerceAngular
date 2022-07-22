@@ -20,6 +20,15 @@ async function getUserByEmailIdAndPassword(emailFormControl,password)
     }else
     {return null;}
 }
+async function getUserById(){
+    let user = await User.findById(id);
+    if (user){
+        user = user.toObject();
+        delete user.hashedPwd;
+        return user;
+    }
+    else{return null;}
+}
 
 function isUserValid(user,password,hashedPwd){
     return user && bcrypt.compareSync(password,hashedPwd);

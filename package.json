@@ -11,7 +11,7 @@
     "build:prod": "npm run build -- --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "debug":"node --nolazy --inspect-brk=9229 server"
+    "debug": "node --nolazy --inspect-brk=9229 server"
   },
   "private": true,
   "dependencies": {
@@ -32,8 +32,12 @@
     "express": "^4.18.1",
     "express-async-handler": "^1.2.0",
     "helmet": "^5.1.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.4.5",
     "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
