@@ -1,9 +1,8 @@
 const passport =  require('passport');
+const { ExtractJwt } = require('passport-jwt');
 const LocalStrategy = require('passport-local');
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJWT= require('passport-jwt').ExtractJWT;
-
-
 const config=require('../config/config');
 const userController = require ('../controllers/user.controller');
 
@@ -20,7 +19,7 @@ const localLogin = new LocalStrategy(
 
 const jwtLogin= new JwtStrategy(
     {
-        jwtFromRequest:ExtractJWT.fromAuthHeaderAsBearerToken(),
+        jwtFromRequest:ExtractJwt.fromAuthHeaderAsBearerToken(),
         secretOrKey:config.jwtSecret
     },
     async(payload,done)=>{
