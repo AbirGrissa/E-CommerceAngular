@@ -15,7 +15,7 @@ export class AppComponent implements OnDestroy{
   user!: User;
   userSubscription: Subscription;
   constructor(private authService:AuthService, private router:Router)
-  {//this.authService.findMe().subscribe(user=>(this.user=user));
+  {this.authService.findMe().subscribe(user=>(this.user=user));
     this.userSubscription=this.authService.user.subscribe(user=>(this.user=user)); //get from observable
   }
   ngOnDestroy(): void {
