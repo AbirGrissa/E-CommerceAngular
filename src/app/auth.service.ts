@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 //import { FormControl } from '@angular/forms';
-import { of, Subject, throwError} from 'rxjs';
+import { EMPTY, of, Subject, throwError} from 'rxjs';
 import {switchMap,catchError} from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
 import { FormControl } from '@angular/forms';
-
+import {TokenStorageService} from "./token-storage.service";
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +13,7 @@ import { FormControl } from '@angular/forms';
 export class AuthService {
   private user$ = new Subject<User>;
   private apiUrl='/api/auth/';
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient,private tokenStorage:TokenStorageService) { }
 
   login(password: string, emailFormControl: string) {
     const loginCredentials={emailFormControl,password};
@@ -37,17 +37,20 @@ export class AuthService {
   logout(){
     //clean up subject (remove user from subject)
     //clean cookies if exist
+    //remove token from local storage
+    this.tokenStorage.removeToken()
     this.setUser(null);
     console.log("user log out")
   }
 
-  register(user:any){ 
+  register(userToSave:any){ 
     //post user to the server
-    return this.httpClient.post<User>(`${this.apiUrl}register`, user).pipe 
-    (switchMap(savedUser=>{
-      this.setUser(savedUser);
-      console.log(`user registred succeffully`,savedUser);
-      return of (savedUser);
+    return this.httpClient.post<User>(`${this.apiUrl}register`, userToSave).pipe(
+      switchMap(({ user , token } )=>{
+      this.setUser(user);
+      this.tokenStorage.setToken(token);
+      console.log(`user registred succeffully`,user);
+      return of (user);
     }),
       catchError(e=>{
       console.log(`server erreur occured`,e);
@@ -64,4 +67,22 @@ export class AuthService {
     return of(user);*/
   private setUser(user:any){
     this.user$.next(user);}
+
+    findMe(){
+      const token = this.tokenStorage.getToken();
+      if (!token){ return EMPTY; //rxjs;}
+    }
+    
+    return this.httpClient.get<any>(`${this.apiUrl}findMe`).pipe
+    ( switchMap(({user}) =>{
+      this.setUser(user);
+      console.log(`user found`,user);
+      return of (user);
+    }),
+    catchError (e=>{
+      console.log(`your login details could not be verified. Please try again`,e);
+      return throwError(`your login details could not be verified`);
+    }
+    ));
+  }
 }
