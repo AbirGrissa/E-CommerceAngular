@@ -1,5 +1,6 @@
 const User = require('../models/user.model');
 const bcrypt= require('bcrypt');
+const mongoose = require ('mongoose');
 
 async function insert(user){
     
@@ -20,7 +21,8 @@ async function getUserByEmailIdAndPassword(emailFormControl,password)
     }else
     {return null;}
 }
-async function getUserById(){
+async function getUserById(id)
+{
     let user = await User.findById(id);
     if (user){
         user = user.toObject();
@@ -36,6 +38,7 @@ function isUserValid(user,password,hashedPwd){
 
 module.exports = {
     insert,
-    getUserByEmailIdAndPassword
+    getUserByEmailIdAndPassword,
+    getUserById
     
 };

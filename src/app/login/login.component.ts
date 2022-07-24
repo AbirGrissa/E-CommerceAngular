@@ -14,12 +14,12 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit {
   error!:string;
   password!:string;
-  email!:string;
+  emailFormControl!:string;
   constructor(private router:Router, private authService:AuthService) {}
 
   login(){
     this.error='';
-    this.authService.login(this.password,this.email).subscribe(
+    this.authService.login(this.password,this.emailFormControl).subscribe(
       s=>this.router.navigate([""]),
       e=> this.error=e
       );

@@ -6,6 +6,13 @@ import { HttpClient } from '@angular/common/http';
 import { User } from './user';
 import { FormControl } from '@angular/forms';
 import {TokenStorageService} from "./token-storage.service";
+
+interface UserDto{
+  user:User;
+  token:string;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,20 +22,20 @@ export class AuthService {
   private apiUrl='/api/auth/';
   constructor(private httpClient:HttpClient,private tokenStorage:TokenStorageService) { }
 
+
   login(password: string, emailFormControl: string) {
     const loginCredentials={emailFormControl,password};
     console.log("connected",loginCredentials);
-    return this.httpClient.post<User>(`${this.apiUrl}login`,loginCredentials).pipe(
-      switchMap( foundUser =>{
-        this.setUser(foundUser);
-        console.log(`user founded: `,foundUser);
-      return of (foundUser);}
+    return this.httpClient.post<UserDto>(`${this.apiUrl}login`,loginCredentials).pipe(
+      switchMap( ({user,token}) =>{
+        this.setUser(user);
+        this.tokenStorage.setToken(token);
+        console.log(`user founded: `,user);
+      return of (user);}
       ),
       catchError(e=>{
         console.log(`server erreur occured`,e);
-        return throwError(`login failed please check your informations`);})
-     
-      
+        return throwError(`login failed please check your informations`);})      
     );
   }
 
@@ -45,8 +52,8 @@ export class AuthService {
 
   register(userToSave:any){ 
     //post user to the server
-    return this.httpClient.post<User>(`${this.apiUrl}register`, userToSave).pipe(
-      switchMap(({ user , token } )=>{
+    return this.httpClient.post<any>(`${this.apiUrl}register`, userToSave).pipe(
+      switchMap( ({user,token})=>{
       this.setUser(user);
       this.tokenStorage.setToken(token);
       console.log(`user registred succeffully`,user);
@@ -68,13 +75,11 @@ export class AuthService {
   private setUser(user:any){
     this.user$.next(user);}
 
-    findMe(){
-      const token = this.tokenStorage.getToken();
-      if (!token){ return EMPTY; //rxjs;}
-    }
-    
-    return this.httpClient.get<any>(`${this.apiUrl}findMe`).pipe
-    ( switchMap(({user}) =>{
+  findMe(){
+    const token = this.tokenStorage.getToken();
+    if (!token){ return EMPTY;}
+    return this.httpClient.get<any>(`${this.apiUrl}findme`).pipe
+    ( switchMap((user) =>{
       this.setUser(user);
       console.log(`user found`,user);
       return of (user);

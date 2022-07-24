@@ -1,5 +1,5 @@
 export interface User {
-    email:string;
+    emailFormControl:string;
     firstname:string;
     lastname:string;
     password:string;
