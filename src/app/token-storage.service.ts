@@ -22,5 +22,6 @@ export class TokenStorageService {
     
     removeToken(){
     window.localStorage.removeItem(this.TOKEN_KEY);
+    //window.localStorage.clear(); !!!!
     }
 }
