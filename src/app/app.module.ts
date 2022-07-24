@@ -12,6 +12,9 @@ import { RegisterComponent } from './register/register.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CompteComponent } from './compte/compte.component';
 import { AuthHeaderInterceptorService } from './interceptors/auth-header-interceptor.service';
+import { PromotionComponent } from './promotion/promotion.component';
+import { FournisseurComponent } from './fournisseur/fournisseur.component';
+import { ClientComponent } from './client/client.component';
 
 
 
@@ -25,6 +28,9 @@ import { AuthHeaderInterceptorService } from './interceptors/auth-header-interce
     LoginComponent,
     RegisterComponent,
     CompteComponent,
+    PromotionComponent,
+    FournisseurComponent,
+    ClientComponent,
     
   ],
   imports: [

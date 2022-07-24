@@ -17,12 +17,14 @@
     <button mat-button>SHARE</button>
   </mat-card-actions>
 </mat-card>-->
-<mat-drawer-container class="example-container">
+<mat-drawer-container class="example-container" >
   <mat-drawer mode="side" opened style="background-color: #E7F6F2; width: 17%;" >
-    <button mat-button  color="primary" class="but"><a href="">Produit</a> </button><br>
-    <button mat-button color="primary" class="but"><a href="">Client</a> </button><br>
-    <button mat-button color="primary" class="but"><a href="">Promotion</a> </button><br>
-    <button mat-button color="primary" class="but"><a href="">Fournisseur</a> </button><br>
+    <button mat-button  color="primary" class="but" ><a href="">Produit</a> </button><br>
+    <button mat-button color="primary" class="but" ><a href="">Client</a> </button><br>
+    <button mat-button color="primary" class="but" ><a href="">Promotion</a> </button><br>
+    <button mat-button color="primary" class="but" ><a [routerLink]="['/register']">Fournisseur</a> </button><br>
   </mat-drawer>
-  <mat-drawer-content><p>Home work !!</p></mat-drawer-content>
+  <mat-drawer-content>
+    Home work!!
+  </mat-drawer-content>
 </mat-drawer-container>

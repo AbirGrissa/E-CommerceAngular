@@ -13,6 +13,7 @@ import { User } from './user';
 export class AppComponent implements OnDestroy{
   title = 'FirstAngularApp';
   user!: User;
+  control="";
   userSubscription: Subscription;
   constructor(private authService:AuthService, private router:Router)
   {this.authService.findMe().subscribe(user=>(this.user=user));
@@ -29,4 +30,5 @@ export class AppComponent implements OnDestroy{
     this.router.navigate([""]);
   }
   myacount(){}
+  setControl(ch:string){this.control=ch;}
 }
