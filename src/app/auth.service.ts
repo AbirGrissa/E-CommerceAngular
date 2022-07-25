@@ -79,8 +79,9 @@ export class AuthService {
     const token = this.tokenStorage.getToken();
     if (!token){ return EMPTY;}
     return this.httpClient.get<any>(`${this.apiUrl}findme`).pipe
-    ( switchMap((user) =>{
+    ( switchMap(({user,token}) =>{
       this.setUser(user);
+      //this.tokenStorage.setToken(token);
       console.log(`user found`,user);
       return of (user);
     }),

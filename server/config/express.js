@@ -7,6 +7,7 @@ const cors = require ('cors');
 const helmet = require ('helmet');
 const routes = require ('../routes');
 const passport = require('../middleware/passport');
+const appRoutes= require('../routes/appRoutes')
 
 //get the app
 const app=express();
@@ -40,9 +41,12 @@ app.use(passport.initialize());
 //api router localhost:4050/api
 app.use('/api/',routes);
 
+app.use('/',appRoutes);
+
 //serve the index.html file
 app.get('*',(req,res)=>res.sendFile(path.join(distDir,
     'index.html')));
 
-
+//set view engine
+//app.set("view engine","ejs");
 module.exports = app;

@@ -13,16 +13,10 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  promotion!: { type: String, required: true },
+  promotion!: { type: String, required: false },
   createdAt: {
     type: Date,
     default: Date.now,
   },
-  roles: [
-    {
-      type: String,
-    },
-  ],
-  versionKey: false,
 });
 module.exports = mongoose.model("Product", ProductSchema);

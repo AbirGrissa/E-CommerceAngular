@@ -30,8 +30,7 @@ import { ClientComponent } from './client/client.component';
     CompteComponent,
     PromotionComponent,
     FournisseurComponent,
-    ClientComponent,
-    
+    ClientComponent,    
   ],
   imports: [
     BrowserModule,
