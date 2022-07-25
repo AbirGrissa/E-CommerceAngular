@@ -1,1 +1,41 @@
-<p>create-update-promo works!</p>
+<mat-card class="login-card">
+    <mat-card-header>
+        <mat-card-title>Nouvelle promotion</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="promoForm">
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>code promo</mat-label>
+                <input formControlName="codePromo" matInput />
+            </mat-form-field>
+</tr>
+<tr>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>pourcentage</mat-label>
+                <input formControlName="pourcentage" matInput />
+            </mat-form-field>
+        </tr>
+        <tr>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>date debut</mat-label>
+                <input formControlName="beginDate" matInput />
+            </mat-form-field>
+        </tr>
+        <tr>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>date fin</mat-label>
+                <input formControlName="endDate" matInput />
+            </mat-form-field>
+        </tr>
+        </table>
+
+
+        </form>
+        <mat-card-actions align="end">
+            <button mat-button (click)="create()">Enregistrer</button>
+          </mat-card-actions>
+        </mat-card-content>
+        </mat-card>
+        

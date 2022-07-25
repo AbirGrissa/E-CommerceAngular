@@ -2,7 +2,8 @@ import { DataSource } from '@angular/cdk/collections';
 import { AfterViewInit, Component, OnInit,ViewChild } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import {Observable, ReplaySubject} from 'rxjs';
+import { PromoService } from '../shared/promo.service';
+import{Promo} from '../modele/Promo';
 
 @Component({
   selector: 'app-promotion',
@@ -19,12 +20,29 @@ import {Observable, ReplaySubject} from 'rxjs';
 }*/
 
 export class PromotionComponent implements AfterViewInit {
+private promotion! : Promo[];
+
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+
+  constructor(private promoS:PromoService) { }
+
+  readPromotion(){
+    this.promoS.readPromos().subscribe(
+      data=>{
+        console.log(data);
+      },
+      error=>{
+        console.log(error);
+      }
+      
+    )
+  }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
+    this.readPromotion();
     this.dataSource.paginator = this.paginator;
   }
   applyFilter(event: Event) {

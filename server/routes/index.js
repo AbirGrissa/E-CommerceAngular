@@ -6,7 +6,7 @@ const router = express.Router();
 
 //localhost:4050/api/auth
 router.use('/auth',authRoutes);
-
+router.use('',appRouts)
 
 /*router.post('/ajout',(req,res,next)=>{
     res.status(200).json({msg:'post request is working'})
