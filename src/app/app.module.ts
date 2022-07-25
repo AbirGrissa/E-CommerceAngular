@@ -20,7 +20,7 @@ import { CreateUpdateFornisComponent } from './create-update-fornis/create-updat
 import { ListFornisComponent } from './list-fornis/list-fornis.component';
 import { ListpromoComponent } from './listpromo/listpromo.component';
 import { CreateUpdatePromoComponent } from './create-update-promo/create-update-promo.component';
-
+import { PromoService } from './shared/promo.service';
 
 
 /*import { ProductsModule } from './products/products.module';*/
@@ -57,7 +57,8 @@ import { CreateUpdatePromoComponent } from './create-update-promo/create-update-
       provide: HTTP_INTERCEPTORS,
       useClass: AuthHeaderInterceptorService,
       multi:true
-    }
+    },
+    PromoService
   ],
   bootstrap: [AppComponent]
 })
