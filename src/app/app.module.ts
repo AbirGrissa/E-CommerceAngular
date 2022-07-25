@@ -15,6 +15,11 @@ import { AuthHeaderInterceptorService } from './interceptors/auth-header-interce
 import { PromotionComponent } from './promotion/promotion.component';
 import { FournisseurComponent } from './fournisseur/fournisseur.component';
 import { ClientComponent } from './client/client.component';
+//import { CreateUpdateComponent } from './create-update/create-update.component';
+import { CreateUpdateFornisComponent } from './create-update-fornis/create-update-fornis.component';
+import { ListFornisComponent } from './list-fornis/list-fornis.component';
+import { ListpromoComponent } from './listpromo/listpromo.component';
+import { CreateUpdatePromoComponent } from './create-update-promo/create-update-promo.component';
 
 
 
@@ -30,7 +35,11 @@ import { ClientComponent } from './client/client.component';
     CompteComponent,
     PromotionComponent,
     FournisseurComponent,
-    ClientComponent,    
+    ClientComponent,
+    CreateUpdateFornisComponent,
+    ListFornisComponent,
+    ListpromoComponent,
+    CreateUpdatePromoComponent,    
   ],
   imports: [
     BrowserModule,
