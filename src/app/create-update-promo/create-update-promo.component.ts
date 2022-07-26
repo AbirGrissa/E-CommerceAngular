@@ -28,7 +28,8 @@ export class CreateUpdatePromoComponent implements OnInit {
   }
 
   update(){
-    this.promoService.updatePromos(this.promo).subscribe(s=>this.router.navigate(["/Promotion"]));
+    if (this.promoForm.valid){
+    this.promoService.updatePromos(this.promo).subscribe(s=>this.router.navigate(["/Promotion"]));}
     }
   
 
