@@ -7,7 +7,7 @@ import { catchError, of, switchMap, throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class PromoService {
-
+  private promotion!:Promo;
   private uri='/api/';
   //private headers=new HttpHeaders().set('content-type','application/json');
 
@@ -27,7 +27,7 @@ export class PromoService {
     }
 
     readPromos(){ 
-      return this.httpClient.get<Promo>(`${this.uri}search`);
+      return this.httpClient.get<Promo[]>(`${this.uri}search`);
       }
 
     updatePromos(promoToUpdate:any){ 
@@ -35,6 +35,14 @@ export class PromoService {
     }
 
     deletePromos(codePromo:any){ 
-      return this.httpClient.delete<Promo>(`${this.uri}delete/`,codePromo);
+      return this.httpClient.delete<Promo>(`${this.uri}delete/:id`,codePromo);
+      }
+
+
+  setPromo(promo:Promo){
+        this.promotion=promo;}
+
+    getPromo(){
+        return this.promotion;
       }
 }

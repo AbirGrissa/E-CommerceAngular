@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Promo } from '../modele/Promo';
 import { PromoService } from '../shared/promo.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { PromoService } from '../shared/promo.service';
   styleUrls: ['./create-update-promo.component.css']
 })
 export class CreateUpdatePromoComponent implements OnInit {
-
+  promo!:Promo;
   constructor(private router:Router, private promoService:PromoService) { }
 
   promoForm=new FormGroup({
@@ -23,8 +24,14 @@ export class CreateUpdatePromoComponent implements OnInit {
   create(){
     if (!this.promoForm.valid){return;}
     const promo=this.promoForm.getRawValue();
-    this.promoService.createPromo(promo).subscribe(s=>this.router.navigate(["/Fournisseur"]));
+    this.promoService.createPromo(promo).subscribe(s=>this.router.navigate(["/Promotion"]));
   }
+
+  update(){
+    const promo=this.promoForm.getRawValue();
+    this.promoService.updatePromos(promo).subscribe(s=>this.router.navigate(["/Promotion"]));
+    }
+  
 
   get codePromo(){return this.promoForm.get("firstname");}
   get pourcentage(){return this.promoForm.get("lastname")}
@@ -32,6 +39,7 @@ export class CreateUpdatePromoComponent implements OnInit {
   get endDate(){return this.promoForm.get("password")}
 
   ngOnInit(): void {
+    this.promo=this.promoService.getPromo();
   }
 
 }

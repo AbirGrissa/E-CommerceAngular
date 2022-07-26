@@ -22,10 +22,10 @@ router.post('/create',(req,res,next)=>{
 });
 
 router.get('/search',(req,res,next)=>{
-    let promotions= Promotion.find({},(err,promotions)=>{
+     promotions= Promotion.find({},(err,promos)=>{
         if (err)
            { res.status(500).json({errmsg:err});}
-        res.json(promotions);
+        res.send(promos);
     });
     
 });
