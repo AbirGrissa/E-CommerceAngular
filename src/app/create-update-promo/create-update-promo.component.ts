@@ -28,15 +28,11 @@ export class CreateUpdatePromoComponent implements OnInit {
   }
 
   update(){
-    const promo=this.promoForm.getRawValue();
-    this.promoService.updatePromos(promo).subscribe(s=>this.router.navigate(["/Promotion"]));
+    this.promoService.updatePromos(this.promo).subscribe(s=>this.router.navigate(["/Promotion"]));
     }
   
 
-  get codePromo(){return this.promoForm.get("firstname");}
-  get pourcentage(){return this.promoForm.get("lastname")}
-  get beginDate(){return this.promoForm.get("email")}
-  get endDate(){return this.promoForm.get("password")}
+
 
   ngOnInit(): void {
     this.promo=this.promoService.getPromo();

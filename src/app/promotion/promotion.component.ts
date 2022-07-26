@@ -28,6 +28,10 @@ export class PromotionComponent implements OnInit  {
       } 
     )
   }
+  create(){
+    this.promoS.setPromo(null);
+    this.router.navigate(['/createUpdatePromo'])
+  }
   update(promotion:Promo){
     this.promoS.setPromo(promotion);
     this.router.navigate(['/createUpdatePromo'])

@@ -25,7 +25,7 @@ export class PromoService {
    
     );
     }
-
+    
     readPromos(){ 
       return this.httpClient.get<Promo[]>(`${this.uri}search`);
       }
@@ -34,12 +34,12 @@ export class PromoService {
       return this.httpClient.put<Promo>(`${this.uri}update`,promoToUpdate);
     }
 
-    deletePromos(codePromo:any){ 
-      return this.httpClient.delete<Promo>(`${this.uri}delete/:id`,codePromo);
+    deletePromos(promotion:any){ 
+      return this.httpClient.delete<Promo>(`${this.uri}delete/:id`,promotion);
       }
 
 
-  setPromo(promo:Promo){
+  setPromo(promo:any){//any for set as null
         this.promotion=promo;}
 
     getPromo(){
