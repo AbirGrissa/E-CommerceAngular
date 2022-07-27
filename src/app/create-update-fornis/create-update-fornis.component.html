@@ -1,1 +1,73 @@
-<p>create-update-fornis works!</p>
+<mat-card class="login-card" *ngIf="!fournis">
+    <mat-card-header>
+        <mat-card-title>Nouveau fournisseur</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="fournisForm">
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input formControlName="emailFormControl" matInput  />
+                    </mat-form-field>
+                </tr>
+                <tr>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>firstname</mat-label>
+                        <input formControlName="firstname" matInput  />
+                    </mat-form-field>
+                </tr>
+                <tr>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>lastname</mat-label>
+                        <input formControlName="lastname" matInput  />
+                    </mat-form-field>
+                </tr>
+               
+            </table>
+
+
+        </form>
+        <mat-card-actions align="end">
+            <button mat-button (click)="create()">Enregistrer</button>
+     
+        </mat-card-actions>
+    </mat-card-content>
+</mat-card>
+
+
+
+<mat-card class="login-card" *ngIf="fournis">
+    <mat-card-header>
+        <mat-card-title>Nouveau fournisseur</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="fournisForm">
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input formControlName="emailFormControl" matInput [(ngModel)]="fournis.emailFormControl" />
+                    </mat-form-field>
+                </tr>
+                <tr>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>firstname</mat-label>
+                        <input formControlName="firstname" matInput [(ngModel)]="fournis.firstname" />
+                    </mat-form-field>
+                </tr>
+                <tr>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>lastname</mat-label>
+                        <input formControlName="lastname" matInput [(ngModel)]="fournis.lastname" />
+                    </mat-form-field>
+                </tr>
+            </table>
+
+
+        </form>
+        <mat-card-actions align="end">
+            <button mat-button (click)="update()">Modifier</button>
+        </mat-card-actions>
+    </mat-card-content>
+</mat-card>

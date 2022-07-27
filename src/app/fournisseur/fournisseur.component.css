@@ -1,4 +1,18 @@
+table {
+    width: 100%;
+  }
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
 
+
+
+  
   td {
     padding-right: 8px;
   }
@@ -161,71 +175,6 @@ a {
     width: 100%;
 }
 
-#site-main{
-    margin-top: 6em;
-    font-family: 'Barlow', sans-serif;
-}
-
-#site-main .container .box-nav > a{
-    font-size: 1em;
-    padding: .5em 1em;
-}
-
-#site-main .container form{
-    margin: 2em 0;
-}
-
-table{
-    border-spacing: 0px;
-    width: 100%;
-}
-
-.table td, .table th{
-    padding: .75em;
-    vertical-align: top;
-    text-align: center;
-    border-top: 1px solid var(--border);
-}
-
-.table td > a.btn{
-    padding: .3em 1em;
-    font-size: 1.1em;
-    margin: 0 .2em;
-}
-
-.table tr:hover{
-    background-color:#06d6a0 ;
-}
-
-.table tr:hover td > a{
-    box-shadow: none;
-}
-
-.table .thead-dark th{
-    color: #fff;
-    background-color: #06d6a0;/*var(--dark)*/ ;
-    border-color: #32383e;
-}
-
-@media only screen and (max-width: 1024px){
-    table, thead, tbody, th, td, tr{
-        display: block;
-    }
-
-    thead tr{
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-
-    tr { border: 1px solid var(--border);}
-
-    td{
-        border: none;
-        position: relative;
-    }
-
-}
 
 /*  add user & update user template */
 .form-title{

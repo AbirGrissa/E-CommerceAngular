@@ -5,7 +5,7 @@ const Fournis = require('../models/fournis.model');
 
 
 router.post('/create',(req,res,next)=>{
-    const savedFournis = new Promotion({
+    const savedFournis = new Fournis({
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         emailFormControl : req.body.emailFormControl,
@@ -23,18 +23,19 @@ router.post('/create',(req,res,next)=>{
 
 router.put('/update',(req,res,next)=>{
     email=req.body.emailFormControl;
+    console.log('verifier email',email);
     Fournis.findOne({email},(err,fournis)=>{
         if (err)
            { res.status(500).json({errmsg:err});}
-        console.log('user founded',fournis);
+        console.log('fournis founded',fournis);
         fournis.firstname= req.body.firstname,
-        fournis.beginDate= req.body.lastname,
+        fournis.lastname= req.body.lastname,
        
         fournis.save((err,fournis)=>{
             if (err){
             res.status(500).json({errmsg:err});}
             res.json(fournis);
-            console.log('user updated succefully ',fournis);
+            console.log('fournis updated succefully ',fournis);
 
         })
     });
