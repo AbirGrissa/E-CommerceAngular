@@ -1,30 +1,10 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="container"> <br><br><br>
   <div class="box-nav d-flex justify-between"> 
-      
-        <button mat-button (click)="create()">Nouvelle Promotion</button>
-          
-      
-  </div><br><br>
-
-
-
+        <button mat-raised-button color="accent" (click)="create()" style="padding:7px ;"> Nouvelle Promotion </button>
+   </div><br><br>
   <div class="card">
   <div class="card-body">
-    <h4 class="card-title">Les promotions</h4>
+    <h4 class="card-title" style="font-family: Lucida Handwriting; color: blue;padding-left: 25px;">Les promotions</h4>
     <table class="table table-hover">
       <thead>
         <tr>
@@ -32,16 +12,19 @@
           <th>pourcentage</th>
           <th>Date debut</th>
           <th>Date fin</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody >
         <tr *ngFor="let promotion of promotions">
           <td>{{promotion.codePromo}}</td>
           <td>{{promotion.pourcentage}}</td>
           <td>{{promotion.beginDate}}</td>
           <td>{{promotion.endDate}}</td>
-          <td><button mat-button (click)="update(promotion)">Modifier</button></td>
-          <td><button mat-button (click)="delete(promotion)">Supprimer</button></td>
+          <td><button mat-raised-button color="primary" (click)="update(promotion)">Modifier</button></td>
+          <td><button mat-raised-button color="warn" (click)="delete(promotion)">Supprimer</button></td>
+          
         </tr>
       </tbody>
 

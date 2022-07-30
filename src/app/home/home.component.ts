@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 
 export class HomeComponent implements OnInit {
    
-  control="";
-  constructor() {}
-  setControl(ch:string){this.control=ch;}
 
-  ngOnInit(): void {this.control=""; }
+  constructor() {}
+
+
+  ngOnInit(): void { }
 
 }

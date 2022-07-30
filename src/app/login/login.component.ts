@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.error='';
      this.authService.login(this.password,this.emailFormControl).subscribe(
-      s=>this.router.navigate([""]),
+      s=>this.router.navigate(["/compte"]),
       e=> this.error=e
       );
      

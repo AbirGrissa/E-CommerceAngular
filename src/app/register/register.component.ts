@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
   register(){
     if (!this.userForm.valid){return;}
     const user=this.userForm.getRawValue();
-    this.authService.register(user).subscribe(s=>this.router.navigate(["/home"]));
+    this.authService.register(user).subscribe(s=>this.router.navigate(["/compte"]));
   }
   
   passwordValidator(control:FormControl)

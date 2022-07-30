@@ -1,0 +1,85 @@
+<mat-card class="login-card" *ngIf="!product">
+    <mat-card-header>
+        <mat-card-title>Nouveau produit</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="productForm">
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>product Code</mat-label>
+                        <input formControlName="productCode" matInput  />
+                    </mat-form-field>
+                </tr>
+                <tr>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>productname</mat-label>
+                        <input formControlName="productname" matInput  />
+                    </mat-form-field>
+                </tr>
+                <tr>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>prix</mat-label>
+                        <input formControlName="prix" matInput  />
+                    </mat-form-field>
+                </tr>
+                <tr>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>description</mat-label>
+                        <input formControlName="description" matInput />
+                    </mat-form-field>
+                </tr>
+               
+            </table>
+
+
+        </form>
+        <mat-card-actions align="end">
+            <button mat-button (click)="create()">Enregistrer</button>
+     
+        </mat-card-actions>
+    </mat-card-content>
+</mat-card>
+
+
+
+<mat-card class="login-card" *ngIf="product">
+    <mat-card-header>
+        <mat-card-title>Nouveau produit</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="productForm">
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>productCode</mat-label>
+                        <input formControlName="productCode" matInput [(ngModel)]="product.productCode" />
+                    </mat-form-field>
+                </tr>
+                <tr>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>productname</mat-label>
+                        <input formControlName="productname" matInput [(ngModel)]="product.productname" />
+                    </mat-form-field>
+                </tr>
+                <tr>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>prix</mat-label>
+                        <input formControlName="prix" matInput [(ngModel)]="product.prix" />
+                    </mat-form-field>
+                </tr>
+                <tr>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>description</mat-label>
+                        <input formControlName="description" matInput [(ngModel)]="product.description" />
+                    </mat-form-field>
+                </tr>
+            </table>
+
+
+        </form>
+        <mat-card-actions align="end">
+            <button mat-button (click)="update()">Modifier</button>
+        </mat-card-actions>
+    </mat-card-content>
+</mat-card>

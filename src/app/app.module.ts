@@ -10,15 +10,16 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CompteComponent } from './compte/compte.component';
 import { AuthHeaderInterceptorService } from './interceptors/auth-header-interceptor.service';
 import { PromotionComponent } from './promotion/promotion.component';
 import { FournisseurComponent } from './fournisseur/fournisseur.component';
-import { ClientComponent } from './client/client.component';
 //import { CreateUpdateComponent } from './create-update/create-update.component';
 import { CreateUpdateFornisComponent } from './create-update-fornis/create-update-fornis.component';
 import { CreateUpdatePromoComponent } from './create-update-promo/create-update-promo.component';
 import { PromoService } from './shared/promo.service';
+import { CrateUpdateProductComponent } from './crate-update-product/crate-update-product.component';
+import { ProduitComponent } from './produit/produit.component';
+import { MonCompteComponent } from './mon-compte/mon-compte.component';
 
 
 /*import { ProductsModule } from './products/products.module';*/
@@ -30,12 +31,13 @@ import { PromoService } from './shared/promo.service';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    CompteComponent,
     PromotionComponent,
     FournisseurComponent,
-    ClientComponent,
     CreateUpdateFornisComponent,
-    CreateUpdatePromoComponent,    
+    CreateUpdatePromoComponent,
+    CrateUpdateProductComponent,
+    ProduitComponent,
+    MonCompteComponent,    
   ],
   imports: [
     BrowserModule,

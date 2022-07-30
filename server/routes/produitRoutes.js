@@ -5,7 +5,7 @@ const Product = require('../models/product.model');
 
 
 router.post('/create',(req,res,next)=>{
-    const savedProduct = new Promotion({
+    const savedProduct = new Product({
         productCode:req.body.productCode,
         productname: req.body.productname,
         prix: req.body.prix,
@@ -24,7 +24,7 @@ router.post('/create',(req,res,next)=>{
 
 router.put('/update',(req,res,next)=>{
     code=req.body.productCode;
-    Product.findOne({email},(err,product)=>{
+    Product.findOne({code},(err,product)=>{
         if (err)
            { res.status(500).json({errmsg:err});}
         console.log('user founded',product);
