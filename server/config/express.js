@@ -31,6 +31,8 @@ app.use(bodyParser.urlencoded({extended:true}));//use node js
 //secure app http part
 app.use(helmet());
 
+//app.use('/uploads',express.static('uploads'));
+
 //allow cors
 app.use(cors());
 

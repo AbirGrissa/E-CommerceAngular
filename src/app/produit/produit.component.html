@@ -12,8 +12,7 @@
             <th>Nom </th>
             <th>Prix</th>
             <th>description</th>
-            <th></th>
-            <th></th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody >
@@ -22,8 +21,8 @@
             <td>{{produit.productname}}</td>
             <td>{{produit.prix}}</td>
             <td>{{produit.description}}</td>
-            <td><button mat-raised-button color="primary" (click)="update(produit)">Modifier</button></td>
-            <td><button mat-raised-button color="warn" (click)="delete(produit)">Supprimer</button></td>
+            <td><button mat-raised-button color="primary" (click)="update(produit)" style="margin:5px">Modifier</button>
+            <button mat-raised-button color="warn" (click)="delete(produit)" style="margin:5px">Supprimer</button></td>
           </tr>
         </tbody>
   
@@ -32,3 +31,7 @@
     </div>
   
   </div>
+
+  
+  
+  

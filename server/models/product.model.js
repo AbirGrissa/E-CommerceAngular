@@ -17,6 +17,10 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  img:{
+    type:String,
+    required:true
+  },
   promotion: { type: String, required: false },
   createdAt: {
     type: Date,
