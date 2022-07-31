@@ -12,18 +12,15 @@ import {ProductService} from'../shared/product.service'
 export class CrateUpdateProductComponent implements OnInit {
 
   product!:Product;
+  image!:string;
+  productForm!:FormGroup;
   constructor(private router:Router, private productService:ProductService) { }
 
-  productForm=new FormGroup({
-    productCode : new FormControl('',[Validators.required]),
-    productname : new FormControl('',[Validators.required]),
-    prix: new FormControl('',[Validators.required]),    
-    description: new FormControl('',[Validators.required])  
-    
-  });
+
 
   create(){
     if (!this.productForm.valid){return;}
+    this
     const product=this.productForm.getRawValue();
     this.productService.createproduct(product).subscribe(s=>this.router.navigate(["/Produit"]));
   }
@@ -33,7 +30,30 @@ export class CrateUpdateProductComponent implements OnInit {
     this.productService.updateproduct(this.product).subscribe(s=>this.router.navigate(["/Produit"]));}
     }
 
-  ngOnInit(): void {this.product=this.productService.getproduct();
+    onFileSelect(event:Event){
+      const input = event.target as HTMLInputElement;
+      const file = input!.files![0];
+      this.productForm.patchValue({img :file});
+      const allowedTypes = ["image/png","image/jpeg","image/jpg"];
+      if (file && allowedTypes.includes(file.type)){
+        const reader = new FileReader();
+        reader.onload=()=> {
+          this.image= reader.result as string;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+  ngOnInit(): void {
+    this.productForm=new FormGroup({
+      productCode : new FormControl('',[Validators.required]),
+      productname : new FormControl('',[Validators.required]),
+      prix: new FormControl('',[Validators.required]),    
+      description: new FormControl('',[Validators.required])  ,
+      img: new FormControl('',[Validators.required])      
+    });
+
+    this.product=this.productService.getproduct();
   }
 
 }
