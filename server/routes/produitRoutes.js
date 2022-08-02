@@ -8,6 +8,8 @@ const storage = multer.diskStorage({
         cb(null,'./uploads/');
     },
     filename:function(req,file,cb){
+        const mimeType=file.mimetype.split('/');
+        const fileType=mimeType[1];
         cb(null,file.originalname);
     }
 });
@@ -16,13 +18,14 @@ const upload =multer({storage:storage,limits:{
 }});
 
 router.post('/create',upload.single('productImage'),(req,res,next)=>{
-    console.log(req.file);
+    const path= 'http://localhost:4050/uploads/'+req.file;//path dynamique
+    console.log(path);
     const savedProduct = new Product({
         productCode:req.body.productCode,
         productname: req.body.productname,
         prix: req.body.prix,
         description : req.body.description,
-        img:req.file.path
+        img:path
     });
     savedProduct.save((err,product)=>{
         if (err){

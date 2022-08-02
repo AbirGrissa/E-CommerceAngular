@@ -20,14 +20,13 @@ export class CrateUpdateProductComponent implements OnInit {
 
   create(){
     if (!this.productForm.valid){return;}
-    this
     const product=this.productForm.getRawValue();
     this.productService.createproduct(product).subscribe(s=>this.router.navigate(["/Produit"]));
   }
 
   update(){
-    if (this.productForm.valid){
-    this.productService.updateproduct(this.product).subscribe(s=>this.router.navigate(["/Produit"]));}
+  
+    this.productService.updateproduct(this.product).subscribe(s=>this.router.navigate(["/Produit"]));
     }
 
     onFileSelect(event:Event){
@@ -50,7 +49,7 @@ export class CrateUpdateProductComponent implements OnInit {
       productname : new FormControl('',[Validators.required]),
       prix: new FormControl('',[Validators.required]),    
       description: new FormControl('',[Validators.required])  ,
-      img: new FormControl('',[Validators.required])      
+      img: new FormControl('')      
     });
 
     this.product=this.productService.getproduct();

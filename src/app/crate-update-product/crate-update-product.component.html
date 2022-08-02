@@ -3,7 +3,7 @@
         <mat-card-title>Nouveau produit</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form [formGroup]="productForm">
+        <form [formGroup]="productForm"  enctype="multipart/form-data">
             <table class="example-full-width" cellspacing="0">
                 <tr>
                     <mat-form-field class="example-full-width" appearance="fill">
@@ -29,6 +29,9 @@
                         <input formControlName="description" matInput />
                     </mat-form-field>
                 </tr>
+                <tr>
+                    <input (change)="onFileSelect($event)"  type="file" name="img" class="form-input">
+                </tr>
                
             </table>
 
@@ -45,10 +48,10 @@
 
 <mat-card class="login-card" *ngIf="product">
     <mat-card-header>
-        <mat-card-title>Nouveau produit</mat-card-title>
+        <mat-card-title>Modifier produit</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form [formGroup]="productForm">
+        <form [formGroup]="productForm" enctype="multipart/form-data">
             <table class="example-full-width" cellspacing="0">
                 <tr>
                     <mat-form-field class="example-full-width" appearance="fill">

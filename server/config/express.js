@@ -7,6 +7,7 @@ const cors = require ('cors');
 const helmet = require ('helmet');
 const routes = require ('../routes');
 const passport = require('../middleware/passport');
+
 //const appRoutes= require('../routes/appRoutes')
 
 //get the app
@@ -31,7 +32,6 @@ app.use(bodyParser.urlencoded({extended:true}));//use node js
 //secure app http part
 app.use(helmet());
 
-//app.use('/uploads',express.static('uploads'));
 
 //allow cors
 app.use(cors());
@@ -39,6 +39,7 @@ app.use(cors());
 //authenticate
 app.use(passport.initialize());
 
+app.use('/uploads/',express.static(path.join('uploads')));
 
 //api router localhost:4050/api
 app.use('/api/',routes);
